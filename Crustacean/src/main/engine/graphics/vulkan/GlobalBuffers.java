@@ -299,9 +299,7 @@ public class GlobalBuffers {
         long jointsOffset = 0;
         BufferUtils.BufferOffsets offsets = new BufferUtils.BufferOffsets(0L, 0L, 0L);
         Results<Results.With1<ModelData>> results = dominion.findEntitiesWith(ModelData.class);
-        Iterator<Results.With1<ModelData>> itr = results.iterator();
-        while (itr.hasNext()) {
-            Results.With1<ModelData> result = itr.next();
+        for (Results.With1<ModelData> result : results) {
             ModelData modelData = result.comp();
             VulkanModel vulkanModel = new VulkanModel(modelData.getModelId());
             dominion.createEntity(vulkanModel);

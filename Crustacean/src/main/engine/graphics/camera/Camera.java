@@ -42,6 +42,14 @@ public class Camera {
         this.position.set(position);
         this.rotationQ.set(rotation);
     }
+
+    public void setCamera(Camera other) {
+        this.position.set(other.position);
+        this.rotationEuler.set(other.rotationEuler);
+        this.rotationQ.set(other.rotationQ);
+        this.viewMatrix.set(other.viewMatrix);
+        this.hasMoved = other.hasMoved;
+    }
     
     public boolean hasMoved() {
         return hasMoved;

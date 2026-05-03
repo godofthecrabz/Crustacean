@@ -16,11 +16,7 @@ public abstract class Cache<T> {
 	public abstract T get(String key);
 	
 	public List<T> getAsList() {
-		List<T> list = new ArrayList<T>();
-		for (T t : cacheMap.values()) {
-			list.add(t);
-		}
-		return list;
+        return new ArrayList<T>(cacheMap.values());
 	}
 	
 	public List<T> getAsList(Predicate<T> test) {

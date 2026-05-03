@@ -3,6 +3,7 @@ package main.engine.scene;
 import dev.dominion.ecs.api.Dominion;
 import dev.dominion.ecs.api.Entity;
 import dev.dominion.ecs.api.Results;
+import main.engine.graphics.camera.Camera;
 import main.engine.graphics.lights.AmbientLight;
 import main.engine.graphics.lights.Light;
 import main.engine.items.GameItem;
@@ -13,13 +14,20 @@ public final class Scene {
     public final Dominion dominion;
     public final String title;
     public final Tag tag;
+
+    public final Camera mainCam;
     public AmbientLight ambientLight;
 
-    public Scene(Dominion dominion, String title, Tag tag, AmbientLight ambientLight) {
+    public Scene(Dominion dominion, String title, Tag tag, Camera camera, AmbientLight ambientLight) {
         this.dominion = dominion;
         this.title = title;
         this.tag = tag;
+        this.mainCam = camera;
         this.ambientLight = ambientLight;
+    }
+
+    public Scene(Dominion dominion, String title, Tag tag, AmbientLight ambientLight) {
+        this(dominion, title, tag, new Camera(), ambientLight);
     }
 
     public Scene(Dominion dominion, String title, Tag tag) {
